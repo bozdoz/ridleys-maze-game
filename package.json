@@ -1,0 +1,26 @@
+{
+  "name": "ridleys-maze-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "posttest": "npm run format",
+    "lint": "eslint . --cache --fix --ext .ts,.tsx",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --loglevel warn --write \"**/*.{ts,tsx,css,md}\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "swipehandler": "^0.2.0"
+  }
+}

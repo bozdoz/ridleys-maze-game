@@ -1,0 +1,9 @@
+{
+  "short_name": "Maze Game",
+  "name": "Ridley's Maze Game",
+  "icons": [],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#ACE",
+  "background_color": "#191929"
+}
