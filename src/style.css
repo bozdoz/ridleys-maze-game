@@ -1,0 +1,39 @@
+* {
+  user-select: none;
+  touch-action: pinch-zoom;
+}
+
+html,
+body,
+canvas {
+  height: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+#sound {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  z-index: 99;
+  height: 35px;
+  width: 35px;
+  background-color: rgba(200, 200, 255, 0.45);
+  border-radius: 5px;
+  background-image: url(https://user-images.githubusercontent.com/1410985/273087968-c2b6a72f-0923-4beb-bc25-19dfa045f4b3.svg);
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: all 0.5s;
+  color: transparent;
+}
+
+#sound.mute {
+  background-image: url(https://user-images.githubusercontent.com/1410985/273087979-63e1d0d3-e5c8-46a5-80a9-936c381025b7.svg);
+}
+
+#sound:hover {
+  background-color: rgba(200, 200, 255, 0.7);
+}
