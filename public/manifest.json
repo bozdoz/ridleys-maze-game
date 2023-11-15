@@ -1,7 +1,12 @@
 {
   "short_name": "Maze Game",
   "name": "Ridley's Maze Game",
-  "icons": [],
+  "icons": [
+    {
+      "src": "social-share.png",
+      "sizes": "any"
+    }
+  ],
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#ACE",

@@ -3,10 +3,13 @@
 // TODO: better grid highlighting on slide
 
 import jsConfetti from "js-confetti";
-import { Howl } from "howler";
+import { Howl, Howler } from "howler";
 import SwipeHandler from "swipehandler";
 
+const sw = new SwipeHandler();
 const confetti = new jsConfetti();
+Howler.volume(0);
+
 let hasWon = false;
 
 const canvas = document.createElement("canvas");
@@ -28,6 +31,9 @@ soundToggle.addEventListener("click", () => {
 	if (soundOn) {
 		// ios needs to fire audio on user event such as click (initially)
 		gun.play();
+		Howler.volume(1);
+	} else {
+		Howler.volume(0);
 	}
 });
 
@@ -39,8 +45,6 @@ const portalColor = (x: string | number) => `hsl(${Number(x) * 110}, 60%, 60%)`;
 
 console.clear();
 
-// TODO: portals?
-const DEBUG = false;
 const OPEN = ".";
 const COVERED = "=";
 const WALL = "#";
@@ -85,8 +89,6 @@ const MAZE = `
 ..    ..   ........
 ..    ..   #......
 `;
-
-const debug = DEBUG ? console.log : () => {};
 
 class Vec {
 	x: number;
@@ -223,8 +225,6 @@ class Player {
 	update(d: number) {
 		if (this.state === "idle") {
 			const diff = this.next.sub(this.pos);
-			// TODO: figure out cells that opposite diff covers
-			// and cover that
 
 			if (diff.isEmpty()) {
 				this.dirty = false;
@@ -348,7 +348,6 @@ class Maze {
 		return v != null && v !== WALL;
 	}
 
-	// TODO: still not getting all cells covered
 	playerMoved(vec: Vec) {
 		// vec may be between cells
 		const ceil = this.grid.get(vec.ceil().toString());
@@ -360,7 +359,6 @@ class Maze {
 			floor.cover();
 		}
 
-		// TODO: check if any cells are still open
 		for (const [, cell] of this.grid) {
 			if (cell.v === OPEN) {
 				// we haven't won
@@ -434,8 +432,6 @@ class Maze {
 		});
 
 		this.player.update(d);
-
-		debug("player", this.player);
 	}
 
 	draw() {
@@ -493,8 +489,6 @@ document.addEventListener("keydown", (e) => {
 });
 
 // swipe
-const sw = new SwipeHandler();
-
 sw.onSwipe((e) => {
 	switch (e.dir) {
 		case "up":
